@@ -4,6 +4,7 @@
   "description": "Server side of expenses app",
   "main": "server.js",
   "type": "module",
+  "homepage": ".",
   "scripts": {
     "start": "node server.js",
     "heroku-postbuild": "cd client && npm install && npm run build"
