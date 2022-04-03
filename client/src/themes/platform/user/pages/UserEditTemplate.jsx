@@ -7,11 +7,11 @@ import DialogContentText from '@mui/material/DialogContentText';
 import "styles/editUser.css";
 
 const UserEditTemplate = observer(({ userEditStore, cancel }) => {
-    const { createUserForm: form, currencyDropdownStore, countriesDropdownStore } = userEditStore;
+    const { createUserForm: form, currencyDropdownStore, countriesDropdownStore, isEdit } = userEditStore;
 
     return (
         <div className="edit--user--container">
-            <DialogContentText className="edit--user--title">Edit user</DialogContentText>
+            <DialogContentText style={!isEdit ? { marginLeft: "140px" } : { marginLeft: 0 }} className="edit--user--title">{isEdit ? "Edit user" : "Create user"}</DialogContentText>
         <div className="editUser">
             <form>
                 <BasicInput className="input--type--edit" field={form.$('firstName')} />

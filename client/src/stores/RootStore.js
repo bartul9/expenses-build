@@ -1,4 +1,4 @@
-import { makeAutoObservable, configure, reaction } from "mobx";
+import { makeAutoObservable, configure } from "mobx";
 import {
     createRouterState,
 } from 'mobx-state-router';

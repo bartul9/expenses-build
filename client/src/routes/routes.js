@@ -11,11 +11,11 @@ const routes = [
         component: <Home />,
         title: "Home"
     },
-    {
-        name: 'createUser',
-        pattern: '/createUser',
-        component: <CreateUser />,
-    },
+    // {
+    //     name: 'createUser',
+    //     pattern: '/createUser',
+    //     component: <CreateUser />,
+    // },
     {
         name: 'expenses',
         pattern: '/expenses',

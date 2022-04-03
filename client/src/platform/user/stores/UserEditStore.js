@@ -22,6 +22,7 @@ class UserEditStore {
         this.createUserForm = new CreateUserForm({
             onSuccess: async () => { 
                 await this.handleUser(this.isEdit ? "edit" : "create"); 
+                this.createUserForm.clear();
             },
             onError:() => {}
         });

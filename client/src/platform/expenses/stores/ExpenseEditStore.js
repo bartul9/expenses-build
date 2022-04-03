@@ -24,10 +24,10 @@ class ExpenseEditStore {
             onSuccess: async () => { 
                 if(!this.expense){
                     await this.createExpense();
+                    this.form.clear();
                 } else {
                     await this.updateExpense();
                 }
-                
             },
         });
         

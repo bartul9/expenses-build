@@ -13,12 +13,14 @@ class ApiClient {
         try {
             await request;
         } catch(err) {
-            if(err.response.status === 408) {
+            if (err.response.status === 408) {
                 this.rootStore.routerStore.goTo("home");
                 this.rootStore.notificationsStore.error("Session expired")
             }
         }
-
+        if (!this.rootStore.userStore.user && this.rootStore.mainViewStore.currentRoute !== "home") {
+            this.rootStore.routerStore.goTo("home");
+        }
         return request;
     }
 

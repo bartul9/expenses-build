@@ -39,8 +39,7 @@ class BalanceStore extends BaseListViewStore {
     createBalance = async (type, amount) => {
         try {
             await this.rootStore.service.createBalance({ type, amount });
-            await this.queryUtility.fetch(); 
-            
+            await this.getBalanceData();
         } catch(err) {
             console.log(err);
         }
