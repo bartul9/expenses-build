@@ -1,0 +1,39 @@
+@import "./expenses.scss";
+
+.deposit--container {
+
+    padding: 10px;
+
+    .deposit--title {
+        font-size: 1.2em;
+        padding: 0px;
+        margin-bottom: 19px;
+    }
+
+    .radio--buttons {
+        display: flex;
+        flex-direction: column;
+
+        @media (max-width: 700px) {
+            width: 200px;
+        }
+    }
+
+    .depositCard {
+        display: flex;
+        flex-direction: column; 
+        justify-content: space-around;
+        align-items: center;
+        height: 150px;
+
+        @media (max-width: 700px) {
+            padding: 20px;
+        }
+    }
+
+    @media (max-width: 700px) {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+}

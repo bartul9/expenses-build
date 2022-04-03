@@ -1,0 +1,51 @@
+@import "base.scss";
+@import "icons.scss";
+@import "expenseCard.scss";
+@import "expenses.scss";
+@import "header.scss";
+@import "expenseEdit.scss";
+@import "createUser.scss";
+@import "home.scss";
+@import "footer.scss";
+@import "overlaySpinner.scss";
+@import "editUser.scss";
+@import "buttons.scss";
+@import "text.scss";
+@import "inputs.scss";
+@import "depositCard.scss";
+
+body {
+    margin: 0;
+    background-color: $whitecolor;
+    overflow-x: hidden;
+  }
+
+.inputFields {
+  display: flex;
+  flex-direction: row;
+  width: 400px;
+  justify-content: space-between;
+  margin: 10px;
+  box-sizing: border-box;
+}
+
+
+.app {
+  height: 100vh;
+  overflow-x: hidden;
+
+  .mainLayout {
+    width: 100%;
+    min-height: 86.8vh;
+    
+    @media (max-width: 600px) {
+        min-height: 87.6vh;
+    }
+  }
+
+  @media (max-width: 600px) {
+    height: fit-content;
+  }
+
+}
+

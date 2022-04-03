@@ -1,0 +1,107 @@
+.ExpenseCard {
+  padding: 5px 10px 5px 10px;
+  background-color: #f7f7f7;
+  font-size: 0.9rem;
+  color: #3e3e42ee;
+  border: 1px dotted #2196f3;
+  margin: 3px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: auto;
+      grid-template-rows: auto;
+  grid-gap: .5rem;
+  max-height: 155px;
+  min-height: 150px;
+  border-radius: 5px;
+}
+
+.ExpenseCard .nameAndActive {
+  min-width: 20%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.ExpenseCard .name {
+  font-size: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ExpenseCard .cost-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.ExpenseCard .cost-container .cost {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-bottom: 1px dotted #2196f3;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  width: 100%;
+  font-style: italic;
+  font-size: 1rem;
+}
+
+.ExpenseCard .cost-container .cost i {
+  margin-right: 8px;
+  font-size: 1rem;
+}
+
+.ExpenseCard .editAndDeleteIcons {
+  min-width: 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.ExpenseCard .priority {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin-left: 4px;
+}
+
+.ExpenseCard .priority span {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 3px;
+  color: #f7f7f7;
+  width: 55px;
+  border-radius: 2px;
+}
+/*# sourceMappingURL=expenseCard.css.map */

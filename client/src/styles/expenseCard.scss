@@ -1,0 +1,78 @@
+@import "./base.scss";
+
+
+.ExpenseCard {
+    padding: 5px 10px 5px 10px;
+    background-color: $whitecolor;
+    font-size: 0.9rem;
+    color: $textcolor;
+    border: 1px dotted #2196f3;
+    margin: 3px;
+    display: grid;
+    grid-template-rows: auto;
+    grid-gap: .5rem;
+    max-height: 155px;
+    min-height: 150px;
+    border-radius: 5px;
+
+    .nameAndActive {
+        min-width: 20%;
+        display: flex;
+        align-items: center;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+    }
+
+    .date {
+
+    }
+
+    .name {
+        font-size: 1rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .cost-container {
+        display: flex;
+        align-items: center;
+
+        .cost {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dotted #2196f3;
+            align-items: flex-end;
+            width: 100%;
+            font-style: italic;
+            font-size: 1rem;
+    
+            i {
+                margin-right: 8px;
+                font-size: 1rem;
+            }
+        }
+    }
+
+    .editAndDeleteIcons {
+        min-width: 10%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .priority {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-left: 4px;
+        span {
+            height: fit-content;
+            padding: 3px;
+            color: $whitecolor;
+            width: 55px;
+            border-radius: 2px;
+        }
+    }
+
+}

@@ -1,0 +1,335 @@
+@import "./base.scss";
+
+.expensesContainer {
+    min-height: 90vh;
+    background-color: $whitecolor;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+
+    .cell--header--label {
+        font-size: 1rem;
+        color: #2196f3;
+
+        @media (max-width: 750px) {
+            font-size: 0.9rem;
+        }
+    }
+
+    .txt--type--money {
+        font-style: italic;
+        font-size: 0.9rem;
+        color: #3e3e42b9;
+        font-weight: 600;
+    }
+
+    .cell--width--100 {
+        min-width: 100px;
+    }
+
+    .cell--width--150 {
+        min-width: 150px;
+    }
+
+    .outsideOverlay {
+        position: fixed;
+        z-index: 100;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.4);
+    }
+
+    .actionButtons {
+        width: 180px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        position: fixed;
+        right: 10px;
+        bottom: 10px;
+        z-index: 1000;
+
+        .actionButton {
+
+            &:hover {
+                cursor: pointer;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .actionTitles {
+        font-weight: 300;
+    }
+
+    .table--loader {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        z-index: 1000;
+    }
+
+    .description--cell {
+        max-width: 150px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .priority--cell {
+        width: 200px;
+    }
+
+    .low {
+        background-color: #1976d2a9;
+        padding: 5px;
+        border-radius: 5px;
+        color: $whitecolor;
+    }
+
+    .medium {
+        background-color: #1976d2da;
+        padding: 5px;
+        border-radius: 5px;
+        color: $whitecolor;
+    }
+
+    .high {
+        background-color: #1976d2;
+        padding: 5px;
+        border-radius: 5px;
+        color: $whitecolor;
+    }
+
+    .tooltip {
+        font-size: 0.9rem;
+    }
+
+    .actionsSlider {
+        border: 1px solid $infocolor;
+        background-color: $whitecolor;
+        box-shadow: 0px 0px 7px $infocolor;
+        border-radius: 10px;
+        position: absolute;
+        bottom: 80px;
+        right: 40px;
+        min-width: 200px;
+        min-height: 100px;
+        padding: 25px;
+        transition: 400ms all ease;
+
+        @media (max-width: 700px) {
+            width: 90%;
+            right: 0px;
+            right: 20px;
+            padding: 25px 0px 25px 0px;
+        }
+    }
+
+    .filter--container {
+
+        .filter--title {
+            font-size: 1.2em;
+            padding: 0px;
+            margin-left: 7px;
+            margin-bottom: 2px;
+        }
+
+        .filterCard {
+            display: flex;
+            flex-direction: column; 
+            justify-content: space-evenly;
+            align-items: center;
+            height: 200px;
+
+        }
+
+        @media (max-width: 700px) {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    .expenses {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 42vh;
+        padding: 0px 0px 10px 0px;
+    }
+    
+    .bottomBar {
+        height: fit-content;
+        width: 100%;
+        padding: 24px 0px 5px 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 90%;
+
+        .totalCost {
+            color: $whitecolor;
+        }
+    }
+
+    .expensesStatistics {
+        padding-top: 25px;
+        height: 42vh;
+        background-color: $whitecolor;
+        display: flex;
+        flex-direction: row;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 100%;
+        margin-top: 25px;
+
+        @media (max-width: 1400px) {
+            flex-direction: column;
+            height: fit-content;
+        }
+
+        @media (max-width: 700px) {
+            flex-direction: column;
+            height: fit-content;
+            padding-top: 25px;
+        }
+
+        .chartContainer {
+            width: 45%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            @media (max-width: 1400px) {
+                height: 350px;
+                width: 100%;
+            }
+
+            @media (max-width: 700px) {
+                height: 250px;
+                width: 100%;
+                padding: 0px 5px 0px 10px;
+            }
+        }
+
+        .infoCardsContainer {
+            display: flex;
+            flex-direction: row;
+            width: 45%;
+            height: 96%;
+            align-items: center;
+            justify-content: space-evenly;
+            padding: 20px;
+
+            .card {
+                margin: 0px 20px;
+                width: calc(33.3333% - 40px); /* 1/3 minus the margins (20+20) */
+                padding: 30px;
+                text-align: center;
+                color: rgba(0, 0, 0, 0.534);
+                float: left;
+                display: flex;
+                align-items: center;
+                border-radius: 10%;
+                justify-content: center;
+                flex-direction: column;
+                border: 2px solid #2195f39f;
+            
+            @media (max-width: 768px) {
+                margin: 0px;
+                height: 200px;
+                width: 200px;
+                border: none;
+                border-radius: 0;
+                padding: 0px 10px 10px 10px;
+            }
+
+            .title {
+                font-size: 1.1rem;
+                color: #2196f3;
+                margin-top: 10px;
+
+                @media (max-width: 768px) {
+                    margin: 0px;
+                }
+            }
+
+            .icon {
+                transition: all 200ms ease-in-out; 
+
+                img {
+                   width: 45px;
+                   height: auto;
+                   margin-top: 40px;
+                   opacity: 0.4;
+                }
+              }
+              .features {
+                ul {
+                    padding: 0;
+                    list-style-type: none;
+                    li {
+                        font-size: 1rem;
+                    }
+                }
+            }
+        }
+            @media (max-width: 1400px) {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 55px;
+            }
+
+            @media (max-width: 716px) {
+                margin: 0px 10px 20px 10px;
+                padding: 0px 10px 10px 10px;
+            }
+        }
+        
+    }
+
+    .emptyState {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 170px;
+        color: $materialBlue;
+        font-size: 1.1rem;
+        padding: 25px;
+        border-radius: 10px;
+
+        img {
+            width: 40px;
+            height: auto;
+            margin-top: 5px;
+            color: silver;
+        }
+    }
+    
+    .expenses::-webkit-scrollbar {
+        width: 0.5rem;
+      }
+       
+    .expenses::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    }
+       
+    .expenses::-webkit-scrollbar-thumb {
+        background-color: silver;
+    }
+}

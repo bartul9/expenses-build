@@ -1,0 +1,123 @@
+@import "base.scss";
+
+.Home {
+    width: auto;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    .leftHome {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: $infocolor;
+        transform-origin: left top;
+        -webkit-transform-origin: 100% 0;
+        -ms-transform-origin: 100% 0;
+        transform-origin: 100% 0;
+        -webkit-transform: skew(-5deg);
+        -ms-transform: skew(-5deg);
+        transform: skew(-5deg);
+
+        .home--icon {
+            color: #f7f7f7; 
+            font-size: 5rem;
+
+            position: relative;
+            top: 5px;
+
+            @media (max-width: 1100px) {
+                font-size: 3rem;
+            }
+        }
+
+        .homeText {
+            text-align: center;
+
+            h1 {
+                font-weight: 400;
+                font-size: 4rem;
+                color: $whitecolor;
+                margin: 5px;
+                margin-right: 20px;
+            }
+    
+            p {
+                font-size: 1.5rem;
+                color: $whitecolor;
+                border-bottom: 1px dotted $whitecolor;
+                font-style: italic;
+
+                @media (max-width: 1100px) {
+                    border-bottom: none;
+                    font-size: 1.3rem;
+                }
+            }
+
+            .homeText-title {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 1100px) {
+            -webkit-transform: skew(0deg);
+            -ms-transform: skew(0deg);
+            transform: skew(0deg);
+
+            height: 160vh;
+        }
+
+    }
+
+    .rightHome {
+        height: 100vh;
+        width: 100%;
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .form {
+
+            form {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                height: fit-content;
+                font-size: 1rem;
+
+                .emailInput {
+                    margin-bottom: 10px;
+                }
+            }
+        }
+
+        .loginUserBtn {
+            margin-top: 10px;
+            margin-left: 0px;
+        }
+
+        .createUserBtn {
+            margin-top: 10px;
+            margin-left: 5px;
+        }
+
+    }
+
+
+    @media (max-width: 1100px) {
+        flex-direction: column;
+    }
+
+}

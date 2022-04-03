@@ -1,0 +1,40 @@
+@import "base.scss";
+
+.icon {
+
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.2); 
+    }
+
+    &.delete {
+        height: auto;
+        color: #d9544fda;
+        width: 27px;
+        transition: all 200ms ease-in-out; 
+
+        &:hover {
+            cursor: pointer;
+            transform: scale(1.2); 
+        }
+    }
+
+    &.edit {
+        color: #3e3e42b9;
+        width: 25px;
+        height: auto;
+        transition: all 200ms ease-in-out; 
+    }
+ 
+    &.active {
+        color: $successcolor;
+        height: auto;
+        transition: all .2s ease-in-out; 
+    }
+
+    &.inactive {
+        color: $errorcolor;
+        height: auto;
+        transition: all .2s ease-in-out; 
+    }
+}

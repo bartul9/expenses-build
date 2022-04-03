@@ -1,0 +1,36 @@
+
+.Header {
+
+    background-color: #d1d1d1;
+
+    .userInfo {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .arrowIcon {
+        color: #3e3e42b9;
+        margin-right: 10px;
+        transition: 200ms all ease;
+    }
+
+    .header-title {
+        display: flex;
+        flex-direction: row;
+        align-items:center;
+        justify-content: center;
+        float: left;
+        font-size: 1.3rem;
+    }
+
+    .createExpenseBtn {
+        margin-right: 20px;
+    }
+
+    .headerText{
+        font-size: 1rem;
+        color: #3e3e42b9;
+        font-weight: 600;
+    }
+
+}

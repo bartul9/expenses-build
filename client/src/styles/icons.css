@@ -1,0 +1,42 @@
+.icon:hover {
+  cursor: pointer;
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+.icon.delete {
+  height: auto;
+  color: #d9544fda;
+  width: 27px;
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+}
+
+.icon.delete:hover {
+  cursor: pointer;
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+.icon.edit {
+  color: #3e3e42b9;
+  width: 25px;
+  height: auto;
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+}
+
+.icon.active {
+  color: #5cb85c;
+  height: auto;
+  -webkit-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+
+.icon.inactive {
+  color: #d9534f;
+  height: auto;
+  -webkit-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+/*# sourceMappingURL=icons.css.map */
