@@ -16,17 +16,12 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// app.use(express.static(path.resolve(__dirname, './client/build')));
-// // All other GET requests not handled before will return our React app
-// app.get('*', (req, res) => {
-//     res.sendFile(path.resolve(__dirname, './client/build', 'index.html'));
-// });
-
-app.use(express.static(__dirname)); //here is important thing - no static directory, because all static :)
-
-app.get("/*", function(req, res) {
-  res.sendFile(path.join(__dirname, "index.html"));
+app.use(express.static(path.resolve(__dirname, '/client/build')));
+// All other GET requests not handled before will return our React app
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '/client/build', 'index.html'));
 });
+
 // Do user authantication with email
 
 const corsOptions = {
