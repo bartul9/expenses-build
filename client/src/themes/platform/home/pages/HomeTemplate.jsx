@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { observer } from "mobx-react";
 
-import { BasicButton, BasicInput, NotifyOutsideClick } from "core/components";
+import { BasicButton, BasicInput } from "core/components";
 import { UserEdit } from "platform/user/pages";
 
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
@@ -33,10 +33,10 @@ const HomeTemplate = observer(({ homeStore }) => {
                         <BasicInput type="password" field={form.$('password')} />
                     </form>
                     <BasicButton className="loginUserBtn" type="submit" onClick={form.onSubmit} label="Login"/>
-                    <BasicButton className="createUserBtn" label="Create user" onClick={() => setCreateUser(true)} />
+                    <BasicButton className="createUserBtn" label="Create user" onClick={() => { setCreateUser(true); form.clear(); }} />
                 </div> :
                 <div className="actionsSlider">
-                    <UserEdit cancel={() => setCreateUser(false)} />
+                    <UserEdit cancel={() => { setCreateUser(false); form.clear(); }} />
                 </div>}
             </div>
         </main>

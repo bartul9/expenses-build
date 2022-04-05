@@ -19,8 +19,8 @@ const UserEditTemplate = observer(({ userEditStore, cancel }) => {
                 <BasicInput className="input--type--edit" type="email" field={form.$('email')} />
                 <BasicInput className="input--type--edit" type="password" field={form.$('password')} />
                 <BasicInput className="input--type--edit" type="password" field={form.$('passwordConfirm')} />
-                <BasicDropdown className="input--type--edit" store={currencyDropdownStore} />
-                <BasicDropdown className="input--type--edit" store={countriesDropdownStore} />
+                <BasicDropdown field={form.$('currency')} className="input--type--edit" store={currencyDropdownStore} />
+                <BasicDropdown field={form.$('country')} className="input--type--edit" store={countriesDropdownStore} />
             </form>
             <div className="button--group">
                 <BasicButton variant="outlined" onClick={cancel} label="Cancel" />

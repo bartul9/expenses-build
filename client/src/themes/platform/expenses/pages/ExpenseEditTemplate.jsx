@@ -1,6 +1,6 @@
 import React from "react";
 import { observer } from "mobx-react";
-import { BasicInput, BasicCheckbox, BasicDropdown, BasicButton } from "core/components";
+import { BasicInput, BasicCheckbox, BasicDropdown, BasicButton, Loader } from "core/components";
 import DialogContentText from '@mui/material/DialogContentText';
 
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -9,7 +9,9 @@ import "styles/expenseEdit.css";
 
 const ExpenseEditTemplate = observer(({ store, closeSlider }) => {
 
-    const { deleteExpense, form, toggleCheckbox, priorityDropdownStore, isEdit } = store;
+    const { deleteExpense, form, toggleCheckbox, priorityDropdownStore, isEdit, loaderStore } = store;
+
+    if (loaderStore.isLoading) return <Loader />
 
     return (
     <div className="expenseEditContainer">

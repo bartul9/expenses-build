@@ -2,7 +2,7 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import path from "path";
-import {fileURLToPath} from 'url';
+import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 
 import usersRouter from "./routes/userRoutes.js";

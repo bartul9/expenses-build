@@ -8,7 +8,9 @@ class DropdownStore {
         dataItemKey: "id",
         dataItemValue: "name",
         label: "",
-        placeholder: ""
+        placeholder: "",
+        defaultValue: null,
+        required: false
     }
 
     actions = {

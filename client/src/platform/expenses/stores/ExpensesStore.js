@@ -3,9 +3,10 @@ import moment from "moment";
 import { orderBy } from "lodash";
 
 import { BaseListViewStore, QueryUtility } from "core/stores";
+
 import { depositIcon, expenseIcon, highestExpenseIcon } from "assets";
 
-import { TableBooleanCell, TableColoredCell} from "core/components";
+import { TableBooleanCell, TableColoredCell } from "core/components";
 
 import { parseMoney } from "core/utils/parseMoney";
 import { parseDate } from "core/utils/parseDate";
@@ -28,9 +29,9 @@ class ExpensesStore extends BaseListViewStore {
 
     get cardsData() {
         return this.statisticData && {
-            depositCardData: { color: "#2195f3a8", icon: depositIcon, name: "Deposits", value: parseMoney(this.rootStore.balanceStore.balanceData.deposits, this.currency), from: parseDate(this.dateValue.from), to: parseDate(this.dateValue.to) },
-            expensesCardData: { color: "#d9544f98", icon: expenseIcon, name: "Withdrawals", value: parseMoney(Math.abs(this.rootStore.balanceStore.balanceData.withdrawals), this.currency), from: parseDate(this.dateValue.from), to: parseDate(this.dateValue.to)},
-            highestExpense: { color: "#f0ad4e", icon: highestExpenseIcon, name: "Highest expense", value: parseMoney(this.statisticData.highestExpense, this.currency), from: parseDate(this.dateValue.from), to: parseDate(this.dateValue.to) },
+            depositCardData: { color: "#2195f3a8", icon: depositIcon, name: "Deposits", value: parseMoney(this.rootStore.balanceStore.balanceData.deposits, this.currency)},
+            expensesCardData: { color: "#d9544f98", icon: expenseIcon, name: "Withdrawals", value: parseMoney(Math.abs(this.rootStore.balanceStore.balanceData.withdrawals), this.currency)},
+            highestExpense: { color: "#f0ad4e", icon: highestExpenseIcon, name: "Highest expense", value: parseMoney(this.statisticData.highestExpense, this.currency)},
         }
     }
 
@@ -72,6 +73,7 @@ class ExpensesStore extends BaseListViewStore {
                     disablePadding: false,
                     label: 'Cost',
                     sortable: true,
+                    className:"txt--type--money-table" ,
                     headerClass: "cell--width--100"
                 },    
                 {
@@ -80,6 +82,7 @@ class ExpensesStore extends BaseListViewStore {
                     disablePadding: false,
                     label: 'Balance',
                     sortable: true,
+                    className:"txt--type--money-table" ,
                     headerClass: "cell--width--100"
                 },
                 {

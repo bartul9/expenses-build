@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 
-import { DropdownStore } from "core/stores";
+import { DropdownStore, LoaderStore } from "core/stores";
 import { CreateExpenseForm } from "platform/expenses/forms";
 import { priorityItems } from "core/priorityItems";
 
@@ -20,6 +20,8 @@ class ExpenseEditStore {
         this.expensesStore = expensesStore;
         this.id = id;
 
+        this.loaderStore = new LoaderStore();
+
         this.form = new CreateExpenseForm({
             onSuccess: async () => { 
                 if(!this.expense){
@@ -33,11 +35,11 @@ class ExpenseEditStore {
         
         this.priorityDropdownStore = new DropdownStore(priorityItems, 
             { 
-                dataItemKey: "name", label: "Priority" 
+                dataItemKey: "name", label: "Priority", required: true
             }, 
             { 
                 onChange: (value) => {
-                    this.form.$("priority").set(value);
+                    this.form.$("priority").onChange(value);
                 }
             }
         );
@@ -47,15 +49,25 @@ class ExpenseEditStore {
     }
 
     async init() {
-        if(this.id) {
-            const response = await this.rootStore.service.findExpense(this.id);
-            this.expense = response.data;
-            const { name, description, cost, isActive, priority } = response.data;
-            this.form.$("name").set(name);
-            this.form.$("description").set(description);
-            this.form.$("cost").set(cost);
-            this.form.$("isActive").set(isActive);
-            this.priorityDropdownStore.selectedItem = priority;
+        if(this.id) {            
+            try {
+                this.loaderStore.suspend();
+
+                const response = await this.rootStore.service.findExpense(this.id);
+                this.expense = response.data;
+
+                const { name, description, cost, isActive, priority } = response.data;
+
+                this.form.$("name").set(name);
+                this.form.$("description").set(description);
+                this.form.$("cost").set(cost);
+                this.form.$("isActive").set(isActive);
+                this.form.$("priority").set(priority);
+            } catch(err) {
+                console.log(err);
+            } finally {
+                this.loaderStore.resume();
+            }
         }
     }
 
@@ -80,7 +92,7 @@ class ExpenseEditStore {
             await this.rootStore.balanceStore.getBalanceData();
             await this.expensesStore.queryUtility.fetch();
         } catch(err) {
-            this.rootStore.notificationsStore.success("Error occurred");
+            this.rootStore.notificationsStore.error(err.response.data.message || "Error occured");
         }
     }
 

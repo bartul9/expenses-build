@@ -34,7 +34,19 @@ class CreateUserForm extends FormBase {
             label: 'Last name',
             placeholder: 'Insert last name',
             rules: 'required|string|between:3,25',
-        }
+        },
+        {
+            name: 'currency',
+            label: 'Currency',
+            default: "",
+            rules: 'required',
+        },
+        {
+            name: 'country',
+            label: 'Country',
+            default: "",
+            rules: 'required',
+        },
     ]) {
         super(actions, {fields: fields})
     }

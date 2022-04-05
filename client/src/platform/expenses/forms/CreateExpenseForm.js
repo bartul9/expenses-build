@@ -26,11 +26,12 @@ class CreateExpenseForm extends FormBase {
         {
             name: 'priority',
             label: 'Priority',
+            default: "Medium",
+            rules: 'required',
         },
         {
             name: 'isActive',
             label: 'Active',
-            // placeholder: '',
             type: "checkbox",
             default: false,
             rules: '',

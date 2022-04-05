@@ -25,6 +25,13 @@
         font-weight: 600;
     }
 
+    .txt--type--money-table {
+        font-style: italic;
+        font-size: 0.8rem;
+        color: #3e3e42b9;
+        font-weight: 600;
+    }
+
     .cell--width--100 {
         min-width: 100px;
     }
@@ -113,6 +120,10 @@
     }
 
     .actionsSlider {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         border: 1px solid $infocolor;
         background-color: $whitecolor;
         box-shadow: 0px 0px 7px $infocolor;

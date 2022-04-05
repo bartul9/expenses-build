@@ -5,6 +5,13 @@ export const createUser = async (req, res) => {
     const data = req.body;
 
     try {
+        const user = await UserModel.findOne({ email: data.email });
+
+        if (user) {
+            res.status(401);
+            throw { message: "User with same E-Mail already exist", status: 401 }
+        }
+
         const newUser = new UserModel(data);
         await newUser.save();
 
@@ -55,7 +62,7 @@ export const loginUser = async (req, res) => {
 
         if (!user) {
             res.status(401);
-            throw { message: "Please enter valid email", status: 401 }
+            throw { message: "User with that E-Mail does not exist", status: 401 }
         }
 
         if (user && (user.password !== password)){

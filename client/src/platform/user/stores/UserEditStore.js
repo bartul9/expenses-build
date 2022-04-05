@@ -33,12 +33,20 @@ class UserEditStore {
                 dataItemValue: "text", 
                 dataItemKey: "code", 
                 label: "Currency" 
+            },
+            {
+                onChange: (currency) => this.createUserForm.$("currency").onChange(currency)
             }
         );
 
         this.countriesDropdownStore = new DropdownStore(
             countryList.map(i => ({name: i, id:i})),
-            { label: "Country" }
+            { 
+                label: "Country" 
+            },
+            {
+                onChange: (country) => this.createUserForm.$("country").onChange(country)
+            }
         )
 
         this.init();
@@ -52,19 +60,17 @@ class UserEditStore {
             this.createUserForm.$("passwordConfirm").set(password);
             this.createUserForm.$("firstName").set(firstName);
             this.createUserForm.$("lastName").set(lastName);
-            this.currencyDropdownStore.selectedItem = currency;
-            this.countriesDropdownStore.selectedItem = country;
+            this.createUserForm.$("currency").set(currency);
+            this.createUserForm.$("country").set(country);
         }
     }
 
+    // Have to fix bug when updatin user country somethint doesnt work fine, so everything in form is lost after save
     handleUser = async (type) => {
         try {
-            const { email, password, firstName, lastName } = this.createUserForm.values();
-            const currency = this.currencyDropdownStore.selectedItem;
-            const country = this.countriesDropdownStore.selectedItem;
+            const { email, password, firstName, lastName, currency, country } = this.createUserForm.values();
 
             if (type === "create") {
-
                 await this.rootStore.service.createUser({ 
                     firstName, 
                     lastName, 
@@ -77,7 +83,6 @@ class UserEditStore {
                 this.rootStore.notificationsStore.success("User created successfully");
                 this.rootStore.routerStore.goTo("expenses");
             } else {
-                this.rootStore.notificationsStore.success("User updated successfully");
                 await this.rootStore.service.updateUser({ 
                     firstName, 
                     lastName, 
@@ -86,11 +91,13 @@ class UserEditStore {
                     currency, 
                     country, 
                 });
-                await this.init();
+                this.rootStore.notificationsStore.success("User updated successfully");
                 await this.rootStore.userStore.init();
+
+                await this.init();
             }
         } catch(err) {
-            console.log(err);
+            this.rootStore.notificationsStore.error(err.response.data.message);
         }
     }
 
