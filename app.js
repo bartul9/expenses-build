@@ -17,7 +17,7 @@ const app = express();
 // Do user authantication with email
 
 const corsOptions = {
-    origin:'https://monefy-app.herokuapp.com', 
+    origin:'https://monify-app.herokuapp.com', 
     credentials:true,
     optionSuccessStatus:200
 };
@@ -37,8 +37,8 @@ app.use("/api/balances", balancesRouter);
 // Build config
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
 app.use(express.static(path.resolve(__dirname, './client/build')));
-// All other GET requests not handled before will return our React app
 app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, './client/build', 'index.html'));
 });
