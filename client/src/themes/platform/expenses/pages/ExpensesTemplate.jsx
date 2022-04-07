@@ -24,6 +24,7 @@ const ExpensesTemplate = observer(({ expensesStore }) => {
         onFilterClick,
         tableStore,
         loaderStore,
+        resetFilter,
         expenseId,
         openSlider,
         closeSlider,
@@ -67,7 +68,7 @@ const ExpensesTemplate = observer(({ expensesStore }) => {
             {sliderType && 
                 <NotifyOutsideClick onOutsideClick={closeSlider}>
                     <div className="actionsSlider">
-                        {sliderType === "filter" && <Filter closeSlider={closeSlider} onFilterClick={onFilterClick} filterExpenses={filterExpenses} dateValue={dateValue} setDate={setDate} />}
+                        {sliderType === "filter" && <Filter resetFilter={resetFilter} closeSlider={closeSlider} onFilterClick={onFilterClick} filterExpenses={filterExpenses} dateValue={dateValue} setDate={setDate} />}
                         {sliderType === "expense" && <ExpenseEdit expensesStore={expensesStore} id={expenseId} closeSlider={closeSlider} />}
                         {sliderType === "deposit" && <Deposit submitDeposit={createBalance} cancelSubmit={closeSlider} />}
                         {sliderType === "account" && <UserEdit cancel={closeSlider} />}

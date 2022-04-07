@@ -11,11 +11,12 @@ const DatepickerTemplate = observer(({ type, selectedDate, className, setDate })
         <div className={className}>
             <LocalizationProvider dateAdapter={AdapterDateFns}>
                 <DesktopDatePicker
+                    style={{width: 300}}
                     label={type}
                     inputFormat="dd/MM/yyyy"
                     value={selectedDate}
                     onChange={(value) => setDate(value, type)}
-                    renderInput={(params) => <TextField {...params} />}
+                    renderInput={(params) => <TextField style={{width: 300}} {...params} />}
                 />
             </LocalizationProvider>
         </div>

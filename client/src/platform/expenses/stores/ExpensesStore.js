@@ -208,6 +208,10 @@ class ExpensesStore extends BaseListViewStore {
         await this.queryUtility.fetch();
     }
 
+    resetFilter = () => {
+        this.dateValue = { from: new Date(moment().startOf("year")), to: new Date(moment().endOf("year")) }
+    }
+
 }
 
 export default ExpensesStore;

@@ -20,7 +20,7 @@ class BalanceStore extends BaseListViewStore {
         this.rootStore = rootStore;
 
         reaction(() => this.rootStore.userStore.isAuthenticated, async isAuthenticated => {
-            if(isAuthenticated){
+            if (isAuthenticated){
                 await this.getBalanceData();
             } 
         })

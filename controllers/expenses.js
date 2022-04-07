@@ -7,7 +7,10 @@ export const getExpenses = async (req, res) => {
     const { from, to, orderBy = "createdAt", order = "asc", rpp, page } = req.query;
 
     try {
-        const count = await ExpenseModel.count({ userId: sessionId });
+        const count = await ExpenseModel.count({ 
+            userId: sessionId,             
+            createdAt: { $gte: new Date(from) ,$lt: new Date(to)}
+        });
         const expenses = await ExpenseModel.find({
             userId: sessionId,
             createdAt: { $gte: new Date(from) ,$lt: new Date(to)}

@@ -49,7 +49,7 @@ class ExpenseEditStore {
     }
 
     async init() {
-        if(this.id) {            
+        if (this.id) {            
             try {
                 this.loaderStore.suspend();
 

@@ -93,7 +93,6 @@ class UserEditStore {
                 });
                 this.rootStore.notificationsStore.success("User updated successfully");
                 await this.rootStore.userStore.init();
-
                 await this.init();
             }
         } catch(err) {

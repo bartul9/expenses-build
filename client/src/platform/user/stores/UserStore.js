@@ -44,7 +44,6 @@ class UserStore {
             onError:() => {}
         });
 
-
         this.init();
     }
 

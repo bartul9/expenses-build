@@ -11,7 +11,7 @@ const UserEditTemplate = observer(({ userEditStore, cancel }) => {
 
     return (
         <div className="edit--user--container">
-            <DialogContentText style={!isEdit ? { marginLeft: "140px" } : { marginLeft: 0 }} className="edit--user--title">{isEdit ? "Edit user" : "Create user"}</DialogContentText>
+            <DialogContentText style={!isEdit ? { marginLeft: "140px" } : { marginLeft: "10px" }} className="edit--user--title">{isEdit ? "Edit user" : "Create user"}</DialogContentText>
         <div className="editUser">
             <form>
                 <BasicInput className="input--type--edit" field={form.$('firstName')} />
