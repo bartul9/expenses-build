@@ -105,7 +105,7 @@ export const deleteExpense = async (req, res) => {
     const { id } = req.params;
 
     try {
-        await ExpenseModel.findOneAndDelete({ id });
+        await ExpenseModel.findOneAndDelete({ _id: id });
         await BalanceModel.findOneAndDelete({ expenseId: id });
 
         res.status(200).json({ message: "Deleted successfully" });

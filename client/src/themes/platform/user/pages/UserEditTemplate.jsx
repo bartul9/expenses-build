@@ -1,13 +1,15 @@
 import React from "react";
 import { observer } from "mobx-react";
 
-import { BasicDropdown, BasicInput, BasicButton } from "core/components";
+import { BasicDropdown, BasicInput, BasicButton, Loader } from "core/components";
 import DialogContentText from '@mui/material/DialogContentText';
 
 import "styles/editUser.css";
 
 const UserEditTemplate = observer(({ userEditStore, cancel }) => {
-    const { createUserForm: form, currencyDropdownStore, countriesDropdownStore, isEdit } = userEditStore;
+    const { createUserForm: form, currencyDropdownStore, countriesDropdownStore, isEdit, loaderStore } = userEditStore;
+
+    if (loaderStore.isLoading) return <Loader />
 
     return (
         <div className="edit--user--container">

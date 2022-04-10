@@ -56,9 +56,7 @@ class UserStore {
                 const route = this.rootStore.routerStore.routerState.routeName;
 
                 if(route === "home" || route === "createUser") {
-                    this.rootStore.routerStore.goTo("expenses", {
-                        params: { userId: this.user.userId },
-                    });
+                    this.rootStore.routerStore.goTo("expenses");
                 }
 
             } else {

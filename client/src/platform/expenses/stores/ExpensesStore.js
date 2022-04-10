@@ -137,6 +137,8 @@ class ExpensesStore extends BaseListViewStore {
     }
     
     async init() {
+        if (!this.rootStore.userStore.user) return;
+        
         try {
             this.loaderStore.suspend();
             await this.queryUtility.fetch();     

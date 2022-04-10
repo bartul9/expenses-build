@@ -103,16 +103,16 @@ class ExpenseEditStore {
     deleteExpense = async () => {
         try {
             await this.rootStore.service.deleteExpense(this.id);
+            await this.expensesStore.queryUtility.fetch();
             await this.rootStore.balanceStore.getBalanceData();
+            this.form.clear();
         } catch(err) {
             console.log(err);
         }
     }
 
     getFieldsToUpdate = () => {
-        const { name, description, cost, isActive } = this.form.values();
-
-        const priority = this.priorityDropdownStore.selectedItem;
+        const { name, description, cost, isActive, priority } = this.form.values();
 
         return {
             name,

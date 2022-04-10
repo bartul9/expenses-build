@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import { CreateUserForm } from "platform/user/forms";
-import { DropdownStore } from "core/stores";
+import { DropdownStore, LoaderStore } from "core/stores";
 import { countryList } from "core/countries";
 
 import { currenciesList } from "core/currenciesList";
@@ -18,11 +18,13 @@ class UserEditStore {
         this.rootStore = rootStore;
 
         this.routeName = this.rootStore.routerStore.routerState.routeName;
+        
+        this.loaderStore = new LoaderStore();
 
         this.createUserForm = new CreateUserForm({
             onSuccess: async () => { 
                 await this.handleUser(this.isEdit ? "edit" : "create"); 
-                this.createUserForm.clear();
+                if (!this.isEdit) this.createUserForm.clear();
             },
             onError:() => {}
         });
@@ -68,6 +70,7 @@ class UserEditStore {
     // Have to fix bug when updatin user country somethint doesnt work fine, so everything in form is lost after save
     handleUser = async (type) => {
         try {
+            this.loaderStore.suspend();
             const { email, password, firstName, lastName, currency, country } = this.createUserForm.values();
 
             if (type === "create") {
@@ -81,7 +84,7 @@ class UserEditStore {
                 });
 
                 this.rootStore.notificationsStore.success("User created successfully");
-                this.rootStore.routerStore.goTo("expenses");
+                await this.rootStore.userStore.init();
             } else {
                 await this.rootStore.service.updateUser({ 
                     firstName, 
@@ -97,6 +100,8 @@ class UserEditStore {
             }
         } catch(err) {
             this.rootStore.notificationsStore.error(err.response.data.message);
+        } finally {
+            this.loaderStore.resume();
         }
     }
 
