@@ -20,7 +20,7 @@ const HeaderTemplate = observer(({ rootStore}) => {
         <Toolbar>
           {currentRoute !== "Monefy" && <ArrowBackIcon className="icon arrowIcon" onClick={rootStore.routerStore.goBack} />}
           <Typography className="headerText" component="div" sx={{ flexGrow: 1 }}>
-            {currentRoute === "Monefy" ? <div className="header-title">Monify <MonetizationOnIcon style={{ color: "#2196f3", fontSize: "2rem" }} /></div> : <span>{currentRoute}</span>}
+            {currentRoute === "Monefy" ? <div className="header-title"><MonetizationOnIcon style={{ color: "#2196f3", fontSize: "2rem" }} /> Monify</div> : <span>{currentRoute}</span>}
           </Typography>
             <div className="userInfo">
               <span className="headerText">

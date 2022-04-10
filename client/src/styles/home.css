@@ -45,7 +45,7 @@
   color: #f7f7f7;
   font-size: 5rem;
   position: relative;
-  top: 5px;
+  bottom: 5px;
 }
 
 @media (max-width: 1100px) {

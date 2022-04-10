@@ -19,8 +19,8 @@ const HomeTemplate = observer(({ homeStore }) => {
             <div className="leftHome">
                 <div className="homeText">
                     <div className="homeText-title">
-                        <h1>Monify</h1>
                         <MonetizationOnIcon className="home--icon" />
+                        <h1>Monify</h1>
                     </div>
                     <p>The only expenses app you will ever need...</p>
                 </div>
