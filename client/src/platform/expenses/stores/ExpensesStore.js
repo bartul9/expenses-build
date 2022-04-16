@@ -13,7 +13,7 @@ import { parseDate } from "core/utils/parseDate";
 
 class ExpensesStore extends BaseListViewStore {
 
-    expenses = null;
+    expensesData = null;
     sliderType = null;
     statisticData = null;
     expenseId = null;
@@ -23,22 +23,22 @@ class ExpensesStore extends BaseListViewStore {
     }
 
     get chartData() {
-        return this.statisticData && orderBy(this.statisticData.items, this.tableStore.filter.orderBy, this.tableStore.filter.order).map(i => (
+        return this.expensesData && orderBy(this.expensesData.items, this.tableStore.filter.orderBy, this.tableStore.filter.order).map(i => (
             { ...i, "Expense cost": i.cost, createdAt: parseDate(i.createdAt), Balance: i.balance }));
     }
 
     get cardsData() {
-        return this.statisticData && {
+        return this.expensesData && {
             depositCardData: { color: "#2195f3a8", icon: depositIcon, name: "Deposits", value: parseMoney(this.rootStore.balanceStore.balanceData.deposits, this.currency)},
             expensesCardData: { color: "#d9544f98", icon: expenseIcon, name: "Withdrawals", value: parseMoney(Math.abs(this.rootStore.balanceStore.balanceData.withdrawals), this.currency)},
-            highestExpense: { color: "#f0ad4e", icon: highestExpenseIcon, name: "Highest expense", value: parseMoney(this.statisticData.highestExpense, this.currency)},
+            highestExpense: { color: "#f0ad4e", icon: highestExpenseIcon, name: "Highest expense", value: parseMoney(this.expensesData.highestExpense, this.currency)},
         }
     }
 
     constructor(rootStore) {
         super();
         makeObservable(this, {
-            expenses: observable,
+            expensesData: observable,
             sliderType: observable,
             statisticData: observable,
             expenseId: observable,
@@ -54,7 +54,6 @@ class ExpensesStore extends BaseListViewStore {
             filter.to = moment(this.dateValue.to).toDate();
 
             await this.getExpenses(filter);
-            await this.getChartData(filter)
         });
 
         this.setTableStore(this.queryUtility,   
@@ -142,7 +141,6 @@ class ExpensesStore extends BaseListViewStore {
         try {
             this.loaderStore.suspend();
             await this.queryUtility.fetch();     
-            await this.getChartData(); 
         } catch(err) {
             console.log(err);
         } finally {
@@ -154,23 +152,13 @@ class ExpensesStore extends BaseListViewStore {
         try {
             this.tableStore.isLoading = true;
             const expenses = await this.rootStore.service.getExpenses(filter);
-            this.expenses = expenses.data;
+            this.expensesData = expenses.data;
             this.tableStore.setData(expenses.data.items.map(e => ({ ...e, cost: parseMoney(e.cost, this.currency), balance: parseMoney(e.balance, this.currency), createdAt: parseDate(e.createdAt, "DD-MM-YYYY HH:mm") })), expenses.data.quantity);
        
         } catch(err) {
             console.log(err);
         } finally {
             this.tableStore.isLoading = false;
-        }
-    }
-
-    async getChartData() {
-        try {
-            const { from, to } = this.dateValue;
-            const response = await this.rootStore.service.getChartData({ from, to });
-            this.statisticData = response.data;
-        } catch(err) {
-            console.log(err);
         }
     }
 

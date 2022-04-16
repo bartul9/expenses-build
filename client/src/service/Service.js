@@ -16,11 +16,6 @@ class Service {
         return response;
     }
 
-    async getChartData(resources) {
-        const response = await this.apiClient.get(`${this.base}/expenses/chartData`, resources);
-        return response;
-    }
-
     async findExpense(id) {
         const response = await this.apiClient.get(`${this.base}/expenses/${id}`);
         return response;
