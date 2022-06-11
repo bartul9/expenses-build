@@ -88,7 +88,7 @@ export const logoutUser = async (req, res) => {
         await SessionModel.findOneAndDelete({ userId: sessionId });
         res.clearCookie("sessionId");
 
-        res.status(201).json({ message: "User logged out succesfully" });
+        res.status(201).json({ message: "User logged out successfully" });
     } catch(error) {
         res.status(409).json({ message: error.message });
     }

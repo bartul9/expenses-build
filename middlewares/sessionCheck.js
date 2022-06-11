@@ -1,8 +1,6 @@
 import moment from "moment";
 import SessionModel from "../models/SessionModel.js";
 
-// How to know if user cleared cookies, which user did clearing ?
-
 const sessionCheck = async (req, res, next) => {
       
     try {

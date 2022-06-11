@@ -88,7 +88,7 @@ class UserStore {
             await this.rootStore.service.logoutUser();
             this.user = null;
             this.loginForm.clear();
-            this.rootStore.notificationsStore.success("User logged out succesfully");
+            this.rootStore.notificationsStore.success("User logged out successfully");
             this.rootStore.routerStore.goTo("home");
         } catch(err) {
             console.log(err);

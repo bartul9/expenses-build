@@ -18,10 +18,6 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    // balance: {
-    //     type: Number,
-    //     required: false
-    // },
     userId: {
         type: "String",
         required: true,

@@ -24,9 +24,7 @@ export const getBalances = async (req, res) => {
 
     try {
         const count = await BalanceModel.count({ userId: sessionId });
-        const balances = await BalanceModel.find({
-            userId: sessionId,
-        });
+        const balances = await BalanceModel.find({ userId: sessionId });
 
         const [ balance, deposits, withdrawals ] = balances.reduce((acc, item) => {
 

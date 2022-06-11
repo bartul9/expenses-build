@@ -1,7 +1,6 @@
 import ExpenseModel from "../models/ExpenseModel.js";
 import BalanceModel from "../models/BalanceModel.js";
 
-// Add querying on server side and query utiliy on client for querying results
 export const getExpenses = async (req, res) => {
     const { sessionId }  = req.cookies;
     const { from, to, orderBy = "createdAt", order = "asc", rpp, page } = req.query;
