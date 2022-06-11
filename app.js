@@ -10,7 +10,7 @@ import expensesRouter from "./routes/expensesRoutes.js";
 import balancesRouter from "./routes/balancesRoutes.js";
 import sessionCheck from "./middlewares/sessionCheck.js";
 
-dotenv.config({ path: "./.env" });
+dotenv.config({ path: "./.env.production.local" });
 
 const app = express();
 
