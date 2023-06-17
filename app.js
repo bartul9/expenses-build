@@ -17,7 +17,7 @@ const app = express();
 // Do user authantication with email
 
 const corsOptions = {
-    origin:'https://monify-app.herokuapp.com', 
+    origin:"https://monify-app-75e153959749.herokuapp.com", 
     credentials:true,
     optionSuccessStatus:200
 };
