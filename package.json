@@ -10,7 +10,7 @@
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "engines": {
-    "node": "v18.16.0"
+    "node": "v16.11.1"
   },
   "author": "Luka Bartulović",
   "license": "ISC",
